@@ -1,5 +1,8 @@
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css');
+
+
 html {
-  font-size: 14px;
+    font-size: 14px;
 }
 
 @media (min-width: 768px) {
@@ -19,4 +22,16 @@ html {
 
 body {
   margin-bottom: 60px;
+  background-color: #12161d;
+  color: #fff;
+}
+
+.e-bigger{
+    font-size: x-large;
+}
+
+.menu{
+    border-radius: 1rem;
+    background-color: #1a222b;
+    padding: 2em;
 }

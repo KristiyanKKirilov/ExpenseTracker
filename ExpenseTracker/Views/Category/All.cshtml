@@ -1,0 +1,31 @@
+﻿@model List<Category>
+
+@{
+    <h1 class="text-center p-2">All Categories</h1>
+    <div class="menu col-6 m-md-auto">
+        <table class="table table-dark">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Category</th>
+                    <th scope="col">Type</th>
+                    <th scope="col">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+            @for (int i = 0; i < @Model.Count; i++)
+            {
+                <tr>
+                    <th scope="row">@(i + 1)</th>
+                    <td>@Model[i].Icon @Model[i].Title</td>
+                    <td>
+                            <span class="badge @(Model[i].Type == "Income" ? "text-bg-success" : "text-bg-danger")">@Model[i].Type</span>
+                        </td>
+                    <td>Edit | Delete</td>
+                </tr>
+            }
+            </tbody>    
+        </table>
+            <a class="btn btn-outline-light d-block m-md-auto col-3" asp-controller="Category" asp-action="Create">Add Category</a>
+    </div>
+}

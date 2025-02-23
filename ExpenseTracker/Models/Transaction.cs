@@ -11,6 +11,7 @@ namespace ExpenseTracker.Models
         [Required]
         public int CategoryId { get; set; }
         [ForeignKey(nameof(CategoryId))]
+        [Required]
         public Category Category { get; set; } 
         [Required]  
         public int Amount { get; set; }
