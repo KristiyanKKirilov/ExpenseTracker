@@ -33,7 +33,12 @@ body {
 .menu{
     border-radius: 1rem;
     background-color: #1a222b;
-    padding: 2em;
+    padding: 0.5em 2em 2em 2em;
+    
+}
+
+table{
+    margin-top: 1em;
 }
 
 .del-btn:hover{
@@ -54,4 +59,36 @@ body {
 
 .link-text:hover{
     color: lightblue;
+}
+
+
+.breadcrumb-custom{
+    color: #fff;
+    text-decoration: none;
+    position: relative;
+    display: inline-block;
+    transition: color 0.3s ease;
+}
+
+.breadcrumb-custom:hover {
+    color: #fff;
+}
+
+.breadcrumb-custom::after{
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -2px;
+    width: 0%;
+    height: 2px;
+    background-color: currentColor;
+    transition: width 0.3s ease;
+}
+
+.breadcrumb-custom:hover::after {
+        width: 100%; /* Full width underline on hover */
+}
+
+.breadcrumb-item + .breadcrumb-item::before{
+    color: #fff;
 }

@@ -1,7 +1,16 @@
 ﻿@model Category
 @{
     <h1 class="p-2 text-md-center">Create Category</h1>
-    <div class="col-4 menu m-md-auto p-md-4">
+    <div class="m-md-auto col-6">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a class="breadcrumb-custom" asp-controller="Home" asp-action="Index">Home</a></li>
+                <li class="breadcrumb-item"><a class="breadcrumb-custom" asp-controller="Category" asp-action="All">All Categories</a></li>
+                <li class="breadcrumb-item active"><a class="breadcrumb-custom">@(Model.CategoryId > 0 ? "Edit": "Create")</a></li>
+            </ol>
+        </nav>
+    </div>
+    <div class="col-6 menu m-md-auto p-md-4">
         <form asp-action="CreateEdit">
             @Html.AntiForgeryToken()
             <input type="hidden" asp-for="@Model.CategoryId" />

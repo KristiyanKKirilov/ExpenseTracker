@@ -1,8 +1,22 @@
 ﻿@model List<Category>
 
 @{
-    <h1 class="text-center p-2">All Categories</h1>
+    <h1 class="text-center p-2 mb-4">All Categories</h1>
+
+    <div class="m-md-auto col-6">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a class="breadcrumb-custom" asp-controller="Home" asp-action="Index">Home</a></li>
+                <li class="breadcrumb-item active"><a class="breadcrumb-custom">All Categories</a></li>
+            </ol>
+        </nav>
+    </div>
+
     <div class="menu col-6 m-md-auto">
+        <div class="d-flex justify-content-end">
+            <a class="btn btn-outline-success col-3" asp-controller="Category" asp-action="CreateEdit">+ New Category</a>
+        </div>
+
         <table class="table table-dark">
             <thead>
                 <tr>
@@ -13,22 +27,21 @@
                 </tr>
             </thead>
             <tbody>
-            @for (int i = 0; i < @Model.Count; i++)
-            {
-                <tr>
-                    <th scope="row">@(i + 1)</th>
-                    <td>@Model[i].Icon @Model[i].Title</td>
-                    <td>
+                @for (int i = 0; i < @Model.Count; i++)
+                {
+                    <tr>
+                        <th scope="row">@(i + 1)</th>
+                        <td>@Model[i].Icon @Model[i].Title</td>
+                        <td>
                             <span class="badge @(Model[i].Type == "Income" ? "text-bg-success" : "text-bg-danger")">@Model[i].Type</span>
                         </td>
-                    <td class="d-flex">
+                        <td class="d-flex">
                             <a class="btn btn-dark edit-btn" asp-controller="Category" asp-action="CreateEdit" asp-route-id="@Model[i].CategoryId"><i class="fa-solid fa-pen"></i></a>
                             <a class="btn btn-dark del-btn" asp-controller="Category" asp-action="Delete" asp-route-id="@Model[i].CategoryId"><i class="fa-solid fa-trash"></i></a>
                         </td>
-                </tr>
-            }
-            </tbody>    
+                    </tr>
+                }
+            </tbody>
         </table>
-            <a class="btn btn-outline-light d-block m-md-auto col-3" asp-controller="Category" asp-action="CreateEdit">Add Category</a>
     </div>
 }
