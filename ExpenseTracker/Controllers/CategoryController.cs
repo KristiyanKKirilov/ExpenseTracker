@@ -20,23 +20,66 @@ namespace ExpenseTracker.Controllers
         }
 
         [HttpGet]
-        public IActionResult Create()
+        public async Task<IActionResult> CreateEdit(int id = 0)
         {
-            Category category = new ();
+            Category? category = await _context.Categories.FindAsync(id);
+
+            if(category == null)
+            {
+                return View(new Category());
+            }
+
+            
             return View(category);
         }
 
         [HttpPost]
-        public async Task<IActionResult> Create(Category category)
+        public async Task<IActionResult> CreateEdit(Category category)
         {
-            if(ModelState.IsValid == false)
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            var existingCategory = await _context.Categories
+                .FirstOrDefaultAsync(c => c.CategoryId == category.CategoryId);
+
+            if (existingCategory == null)
+            {
+                await _context.AddAsync(category);
+            }
+            else
+            {
+                existingCategory.Title = category.Title;
+                existingCategory.Type = category.Type;
+                existingCategory.Icon = category.Icon;
+            }
+
+            await _context.SaveChangesAsync();
+
+            return RedirectToAction(nameof(All));
+        }
+
+        public async Task<IActionResult> Delete(int id)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            var existingCategory = await _context.Categories
+                .FirstOrDefaultAsync(c => c.CategoryId == id);
+
+            if (existingCategory == null)
             {
                 return BadRequest();
             }
 
-            await _context.AddAsync(category);
+            _context.Categories.Remove(existingCategory);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(All));
+
+
         }
 
     }

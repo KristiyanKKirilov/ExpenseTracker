@@ -35,3 +35,13 @@ body {
     background-color: #1a222b;
     padding: 2em;
 }
+
+.del-btn:hover{
+    background-color: red;
+    color: #000;
+}
+
+.edit-btn:hover {
+    background-color: #FDDA0D;
+    color: #000;
+}

@@ -21,11 +21,14 @@
                     <td>
                             <span class="badge @(Model[i].Type == "Income" ? "text-bg-success" : "text-bg-danger")">@Model[i].Type</span>
                         </td>
-                    <td>Edit | Delete</td>
+                    <td class="d-flex">
+                            <a class="btn btn-dark edit-btn" asp-controller="Category" asp-action="CreateEdit" asp-route-id="@Model[i].CategoryId">Edit</a>
+                            <a class="btn btn-dark del-btn" asp-controller="Category" asp-action="Delete" asp-route-id="@Model[i].CategoryId">Delete</a>
+                        </td>
                 </tr>
             }
             </tbody>    
         </table>
-            <a class="btn btn-outline-light d-block m-md-auto col-3" asp-controller="Category" asp-action="Create">Add Category</a>
+            <a class="btn btn-outline-light d-block m-md-auto col-3" asp-controller="Category" asp-action="CreateEdit">Add Category</a>
     </div>
 }
