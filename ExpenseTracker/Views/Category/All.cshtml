@@ -22,8 +22,8 @@
                             <span class="badge @(Model[i].Type == "Income" ? "text-bg-success" : "text-bg-danger")">@Model[i].Type</span>
                         </td>
                     <td class="d-flex">
-                            <a class="btn btn-dark edit-btn" asp-controller="Category" asp-action="CreateEdit" asp-route-id="@Model[i].CategoryId">Edit</a>
-                            <a class="btn btn-dark del-btn" asp-controller="Category" asp-action="Delete" asp-route-id="@Model[i].CategoryId">Delete</a>
+                            <a class="btn btn-dark edit-btn" asp-controller="Category" asp-action="CreateEdit" asp-route-id="@Model[i].CategoryId"><i class="fa-solid fa-pen"></i></a>
+                            <a class="btn btn-dark del-btn" asp-controller="Category" asp-action="Delete" asp-route-id="@Model[i].CategoryId"><i class="fa-solid fa-trash"></i></a>
                         </td>
                 </tr>
             }

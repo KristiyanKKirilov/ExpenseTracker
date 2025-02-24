@@ -1,14 +1,15 @@
 ﻿@model Category
 @{
     <h1 class="p-2 text-md-center">Create Category</h1>
-        <div class="col-4 menu m-md-auto p-md-4">
-    <form asp-action="CreateEdit">
-            <input type="hidden" asp-for="@Model.CategoryId"/>
+    <div class="col-4 menu m-md-auto p-md-4">
+        <form asp-action="CreateEdit">
+            @Html.AntiForgeryToken()
+            <input type="hidden" asp-for="@Model.CategoryId" />
             <div class="btn-group mb-2" role="group" aria-label="Basic radio toggle button group">
-                <input type="radio" class="btn-check" name="type" asp-for="Type" id="type1" value="Expense" autocomplete="off" checked/>
+                <input type="radio" class="btn-check" name="type" asp-for="Type" id="type1" value="Expense" autocomplete="off" checked />
                 <label class="btn btn-outline-light" for="type1">Expense</label>
 
-                <input type="radio" class="btn-check" name="type" asp-for="Type" id="type2" value="Income" autocomplete="off"/>
+                <input type="radio" class="btn-check" name="type" asp-for="Type" id="type2" value="Income" autocomplete="off" />
                 <label class="btn btn-outline-light" for="type2">Income</label>
 
             </div>
@@ -21,9 +22,10 @@
                 <span class="input-group-text" id="basic-addon1">Icon</span>
                 <input type="text" class="form-control" aria-label="Title" asp-for="@Model.Icon" aria-describedby="basic-addon1">
             </div>
+            <p class="small">Choose your icon from here: <a href="https://emojipedia.org/" target="_blank" class="link-text">EmojiPedia</a></p>
 
-        <button type="submit" class="btn btn-outline-light">Submit</button>
-    </form>
-        </div>
+            <button type="submit" class="btn btn-outline-light">Submit</button>
+        </form>
+    </div>
 
 }

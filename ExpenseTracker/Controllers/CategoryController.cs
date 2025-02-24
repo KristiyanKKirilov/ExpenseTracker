@@ -33,6 +33,7 @@ namespace ExpenseTracker.Controllers
             return View(category);
         }
 
+        [ValidateAntiForgeryToken]
         [HttpPost]
         public async Task<IActionResult> CreateEdit(Category category)
         {
@@ -50,6 +51,7 @@ namespace ExpenseTracker.Controllers
             }
             else
             {
+                _context.Update(existingCategory);
                 existingCategory.Title = category.Title;
                 existingCategory.Type = category.Type;
                 existingCategory.Icon = category.Icon;
